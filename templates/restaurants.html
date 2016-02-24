@@ -20,22 +20,19 @@
             {% endwith %}
         </div>
 
-		<a href="{{url_for('newRestaurant'}}">Add New Restaurant</a>
+		<a href="{{url_for('newRestaurant')}}">Add New Restaurant</a>
 
-		{% for i in restaurants %}
-
-		<div class="nameandprice">
-            <span class="name"><p>{{i.name}}</p></span>
-            <span class="price"><p>{{i.price}}</p></span>
+		{% for i in restaurant %}
+		<div class="restaurant">
+            <div class="nameandprice">
+                <span class="name"><p><a href="{{url_for('showMenu', restaurant_id=i.id)}}">{{i.name}}</a></p></span>
+            </div>
+            
+            <div class="editdeletepane price">
+                <a href="{{url_for('editRestaurant', restaurant_id=i.id)}}">Edit</a> 
+                <a href="{{url_for('deleteRestaurant', restaurant_id=i.id)}}">Delete</a>
+            </div>
         </div>
-		<div class="description">
-        	<p>{{i.description}}</p>
-        </div>
-		
-		<div class="editdeletepane">
-            <a href="{{url_for('editRestaurant', restaurant_id=restaurant.id)}}">Edit</a> 
-            <a href="{{url_for('deleteRestaurant', restaurant_id=restaurant.id)}}">Delete</a>
-		</div>
 		{% endfor %}
 	</div>
 </body>

@@ -53,6 +53,12 @@ a
 .nameandprice
 {
 }
+.restaurant
+{
+	display:block;
+	float:none;
+	clear:both;
+}
 .name 
 {
 	width:50%;

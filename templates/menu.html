@@ -37,6 +37,8 @@
             <a href="{{url_for('deleteMenuItem', restaurant_id=restaurant.id, menu_id=i.id)}}">Delete</a>
 		</div>
 		{% endfor %}
+        <br />
+        <a href="{{url_for('showRestaurants')}}">&lt;&lt; Back to Restaurants</a>
 	</div>
 </body>
 

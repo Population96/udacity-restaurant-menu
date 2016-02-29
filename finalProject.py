@@ -13,16 +13,21 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 #Making an API Endpoint (GET Request)
+@app.route('/restaurants/JSON')
+def restaurantsJSON():
+    restaurants = session.query(Restaurant).all()
+    return jsonify(Restaurants=[i.serializeR for i in restaurants])
+
 @app.route('/restaurants/<int:restaurant_id>/menu/JSON')
 def restaurantMenuJSON(restaurant_id):
     restaurant = session.query(Restaurant).filter_by(id = restaurant_id).one()
     items = session.query(MenuItem).filter_by(restaurant_id = restaurant_id).all()
-    return jsonify(MenuItems=[i.serialize for i in items])
+    return jsonify(MenuItems=[i.serializeMI for i in items])
 
 @app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/JSON')
 def itemMenuJSON(restaurant_id, menu_id):
     item = session.query(MenuItem).filter_by(id = menu_id).one()
-    return jsonify(MenuItem = item.serialize)
+    return jsonify(MenuItem = item.serializeMI)
 
 # SHOW ALL RESTAURANTS
 @app.route('/')
@@ -90,10 +95,10 @@ def newMenuItem(restaurant_id):
         session.add(newItem)
         session.commit()
         flash("New menu item created!")
-        return redirect(url_for('restaurantMenu', restaurant_id =
+        return redirect(url_for('showMenu', restaurant_id =
             restaurant_id))
     else:
-        return render_template('newmenuitem.html', restaurant_id =
+        return render_template('newMenuItem.html', restaurant_id =
             restaurant_id)
 
 # EDIT A MENU ITEM
@@ -106,9 +111,9 @@ def editMenuItem(restaurant_id, menu_id):
             session.add(editedItem)
             session.commit()
             flash("Menu item edited!")
-        return redirect(url_for('restaurantMenu', restaurant_id = restaurant_id))
+        return redirect(url_for('showMenu', restaurant_id = restaurant_id))
     else:
-        return render_template('editmenuitem.html', restaurant_id =
+        return render_template('editMenuItem.html', restaurant_id =
             restaurant_id, menu_id = menu_id, item = editedItem)
 
 # DELETE A MENU ITEM
@@ -119,9 +124,9 @@ def deleteMenuItem(restaurant_id, menu_id):
         session.delete(deletedItem)
         session.commit()
         flash("Menu item deleted!")
-        return redirect(url_for('restaurantMenu', restaurant_id = restaurant_id))
+        return redirect(url_for('showMenu', restaurant_id = restaurant_id))
     else:
-        return render_template('deletemenuitem.html', restaurant_id =
+        return render_template('deleteMenuItem.html', restaurant_id =
             restaurant_id, menu_id = menu_id, item = deletedItem)
 
 if __name__ == '__main__':

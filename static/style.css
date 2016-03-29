@@ -2,7 +2,7 @@ body
 { 
 	font-family: sans-serif; 
 	background-image: url('img3.jpg'); 
-	background-color: #333333;
+	background-color: #FFC;
 }
 h1, h2, h3, h4       
 { 
@@ -22,7 +22,7 @@ h2
 	font-size: 1.2em; 
 }
 
-p, dd, dt               
+p, dd, dt, label             
 { 
 	color: #CCCCCC;
 }

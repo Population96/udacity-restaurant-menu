@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -13,13 +12,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div class="container">
-    	<div class="header clearfix">
+	<div class="pane">
+    	<div class="header">
 			<h1>Restaurants</h1>
-            <div class="user pull-right">User</div>
         </div>
-        
-        <a href="{{url_for('newRestaurant')}}">Add New Restaurant</a>
 		
         <div class="flash">
             {% with messages = get_flashed_messages() %}
@@ -33,22 +29,20 @@
             {% endwith %}
         </div>
 
-        <div class="row"> 
-        {% for i in restaurant %}
-            <div class="col-md-6">
-            	<div class="restaurant">
-                	<div class="nameandprice">
-                    	<span class="name"><p><a href="{{url_for('showMenu', restaurant_id=i.id)}}">{{i.name}}</a></p></span>
-                    </div>
-                
-                    <div class="editdeletepane price">
-                        <a href="{{url_for('editRestaurant', restaurant_id=i.id)}}">Edit</a> 
-                        <a href="{{url_for('deleteRestaurant', restaurant_id=i.id)}}">Delete</a>
-                    </div>
-                </div>
+		<a href="{{url_for('newRestaurant')}}">Add New Restaurant</a>
+
+		{% for i in restaurant %}
+		<div class="restaurant">
+            <div class="nameandprice">
+                <span class="name"><p><a href="{{url_for('showMenu', restaurant_id=i.id)}}">{{i.name}}</a></p></span>
             </div>
-        {% endfor %}
+            
+            <div class="editdeletepane price">
+                <a href="{{url_for('editRestaurant', restaurant_id=i.id)}}">Edit</a> 
+                <a href="{{url_for('deleteRestaurant', restaurant_id=i.id)}}">Delete</a>
+            </div>
         </div>
+		{% endfor %}
 	</div>
 </body>
 

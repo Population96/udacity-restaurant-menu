@@ -2,7 +2,7 @@ body
 { 
 	font-family: sans-serif; 
 	background-image: url('img3.jpg'); 
-	background-color: #FFC;
+	background-color: #000;
 }
 h1, h2, h3, h4       
 { 
@@ -14,8 +14,7 @@ h1, h2
 	margin: 0; 
 }
 h1              
-{ 
-	border-bottom: 2px solid #eee; 
+{  
 }
 h2
 { 
@@ -24,40 +23,55 @@ h2
 
 p, dd, dt, label             
 { 
-	color: #CCCCCC;
+	color: #DDDDDD;
 }
 
 a 
 {
 	text-decoration: none; 
-	color:#FFFFCC; 
+	color:#F5C8F5; 
 	font-size: .75em;
 }
 
-.pane 
+.container 
 {
 	
-	width:70%;
-	border: 2px solid;
+	
+	/*border: 2px solid;
     border-radius: 25px; 
-	padding: 5px 5px 15px 5px; 
+	padding: 5px 5px 20px 5px; 
 	margin: 5px auto; 
 	border-color: #999999; 
-	background-color: #333333 
+	background-color: #333333;*/
 }
 .header         
 {
-	left:50%; 
-	text-align: center;
+	border: 2px solid;
+    border-radius: 20px; 
+	margin: 5px 5px 5px 5px; 
+	border-color: #999999; 
+	background-color: #333333;
+}
+.user
+{
+	height:50px;
+	width:50px;
+	vertical-align:middle;
+	background-color:#E51013;
 }
 .nameandprice
 {
 }
 .restaurant
 {
-	display:block;
-	float:none;
-	clear:both;
+	/*width:450px;*/
+	margin: 5px 5px 5px 5px; 
+	height:150px;
+	border: 2px solid;
+	border-radius: 10px; 
+	padding: 5px 5px 15px 5px;
+	border-color: #999999; 
+	background-color: #333333;
 }
 .name 
 {

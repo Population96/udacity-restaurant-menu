@@ -1,39 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider green">
+    	<div class="col-md-12"></div>
+    </div>
+    <div class="row banner menu">
+    	<div class="col-md-11 col-md-offset-1 padding-none">
+        	<h1>New Menu Item</h1>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-md-6 col-md-offset-1 padding-top">
+			<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}" method="post">
+            	<div class="form-group">
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="50" class="form-control" name="name"placeholder="Name of the course">
 
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+					<label for="description">Description:</label>
+					<textarea class="form-control" maxlength="250" rows="3" name="description" placeholder="Description of the course"></textarea>
 
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-</head>
-<body>
-
-<div class="pane">
-	<h1>New Menu Item</h1>
-
-	<form action="{{url_for('newMenuItem', restaurant_id=restaurant_id)}}" method="post">
-
-		<p>Name: </p>
-		<input type="text" size="30" name="name">
-		<p>Description:</p>
-		<input type="text" size="30" name="description">
-		<p>Price:</p>
-		<input type="text" size="30" name="price">
-		<p>Course:</p>
-		<input type="radio" name="course" value="Appetizer">Appetizer</br>
-		<input type="radio" name="course" value="Entree">Entree</br>
-		<input type="radio" name="course" value="Dessert">Dessert</br>
-		<input type="radio" name="course" value="Beverage">Beverage</br>
-		</br>
-
-		<input type="submit" value="Create">
-    	<a href="{{url_for('showMenu', restaurant_id = restaurant_id)}}">Cancel</a>
-	</form>
-</div>
-</body>
-</html>
+					<label for="price">Price:</label>
+					<div class="input-group">
+						<div class="input-group-addon">$</div>
+						<input type ="text" class="form-control" maxlength="10" name="price" placeholder="Price in $">
+					</div>
+					<label for="course">Course:</label>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course1" value="Appetizer">Appetizer
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course2" value="Entree">Entree
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course3" value="Dessert">Dessert
+					  </label>
+					</div>
+					<div class="radio">
+					  <label>
+					    <input type="radio" name="course" id="course4" value="Beverage">Beverage
+					  </label>
+					</div>
+					<button type="submit" class="btn btn-default" id="submit" type="submit">
+					<span class="glyphicon glyphicon-glass" aria-hidden="true"></span>Create</button>
+    				<a href="{{url_for('showMenu', restaurant_id = restaurant_id)}}"><button type="button" class="btn btn-default" id="cancel">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Cancel</button></a>
+                </div>
+			</form>
+        </div>
+    </div>
+{% endblock %}

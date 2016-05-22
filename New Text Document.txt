@@ -1,0 +1,6 @@
+<button>
+    <!-- sendTokenToServer() is implemented in application.py -->
+    <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
+    <a href='javascript:sendTokenToServer()'>Facebook Login</a>
+    </fb:login-button>
+  </button>

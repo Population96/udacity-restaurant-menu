@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+    	<div class="header clearfix">
+			<div class="col-md-6">
+                <a href="{{url_for('showRestaurants')}}">
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>Show All Restaurants
+                </a>
+            </div>
+            <div class="col-md-6 user pull-right">
+                <a href="{{url_for('showLogin')}}">Click Here to Log in</a>
+            </div>
+        </div>
+        
+		
+        <div class="flash">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li><strong> {{ message }} </strong></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <div class="row"> 
+        {% for i in restaurant %}
+            <div class="col-md-6">
+            	<div class="restaurant">
+                	<div class="nameandprice">
+                    	<span class="name"><p><a href="{{url_for('showMenu', restaurant_id=i.id)}}">{{i.name}}</a></p></span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+{% endblock %}
